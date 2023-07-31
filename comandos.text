@@ -1,0 +1,63 @@
+COMANDOS IMPORTANTES
+
+//cd aula1
+//npm install express // atuliza
+//npm init -y
+//npm i axios
+
+//node server.js === raiz do site
+
+para nao ficar parando e inicializando o servidor toda hora
+//npm install nodemon --save-dev
+//npx nodemon server.js
+//npm start
+
+//pwd ==caminho
+
+C:\Users\Samsung>cd C:\node
+
+C:\node>npm start
+
+BASICO -------------------
+
+Error: listen EADDRINUSE: address already in use :::3000
+
+No Linux, pode tentar assim:
+
+sudo lsof -i :3000
+kill -9 {PID}
+
+
+No Windows você pode tentar assim:
+
+C:\Windows\System32>taskkill /F /IM node.exe
+
+----------
+Views
+
+npm install ejs
+
+-----------
+Arquivos estáticos
+
+npm i
+
+-----------
+conexão com o primeiro model
+
+npm install dotenv
+
+npm install mongoose
+
+---------
+
+Session e flash messages
+
+npm i express-session connect-mongo connect-flash
+
+----------
+
+Helmet e CSRF
+
+npm i helmet
+npm i csurf
