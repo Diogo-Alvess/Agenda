@@ -1,7 +1,7 @@
 COMANDOS IMPORTANTES
 
 //cd aula1
-//npm install express // atuliza
+//npm install express // atualiza
 //npm init -y
 //npm i axios
 
@@ -61,3 +61,12 @@ Helmet e CSRF
 
 npm i helmet
 npm i csurf
+
+--------- PACOTE PARA VALIDAR EMAIL etc
+
+npm i validator
+
+-------- PACOTE PARA CRIPTOGRAFAR AS SENHAS
+
+npm i bcryptjs
+
