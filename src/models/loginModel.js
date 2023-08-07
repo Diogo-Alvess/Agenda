@@ -18,6 +18,23 @@ class Login{
     this.user = null;
   }
 
+  async login(){
+    this.valida();
+    if(this.errors.length > 0) return;
+    this.user = await LoginModel.findOne({email: this.body.email}); // encontra um registro na base de dados 
+
+    if(!this.user) {
+      this.errors.push('Usuário não existe.');
+      return;
+    }
+    // valida a senha
+    if(!bcryptjs.compareSync(this.body.password, this.user.password )){
+      this.errors.push('Senha inválida');
+      this.user = null; // tira o usuario
+      return;
+    }
+  }
+
   async register () // quem chamou não precisa esperar por sua execução e ela pode continuar normalmente sem bloquear a aplicação
   {
     this.valida();
@@ -30,21 +47,15 @@ class Login{
     /// criptografia
     const salt = bcryptjs.genSaltSync();
     this.body.password = bcryptjs.hashSync(this.body.password, salt);
-
-    try{
     
     this.user =  await LoginModel.create(this.body); // registra na base dados
 
-    } catch(e) {
-      console.log(e);
-    }
   }
 
   async userExists(){
 
-    const user = await LoginModel.findOne({email: this.body.email}); // encontra um registro na base de dados 
-
-    if(user) this.errors.push('Usuário ja existe.'); // se o usuario for preenchido
+    this.user = await LoginModel.findOne({email: this.body.email}); // encontra um registro na base de dados 
+    if(this.user) this.errors.push('Usuário ja existe.'); // se o usuario for preenchido
   }
 
   valida()
