@@ -64,6 +64,17 @@ Contato.buscaPorId = async function(id) {
   return contato;
 };
 
+Contato.buscaContatos = async function() {
+  const contatos = await ContatoModel.find()
+    .sort({ criadoEm: -1 }); // coloca em ordem decresente
+  return contatos;
+};
+
+Contato.delete = async function(id) {
+  if(typeof id !== 'string') return;
+  const contato = await ContatoModel.findOneAndDelete({_id: id}); // viltra oq vc uqer deletar
+  return contato;
+};
 
 module.exports = Contato;
 

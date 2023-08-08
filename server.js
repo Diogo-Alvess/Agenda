@@ -6,7 +6,11 @@ const app = express();
 // conexão
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.CONNECTIONSTRING, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.CONNECTIONSTRING, 
+  {useNewUrlParser: true, 
+    useUnifiedTopology: true,
+    useFindAndModify: false
+  })
   .then(() => {
     app.emit('pronto');
 })
